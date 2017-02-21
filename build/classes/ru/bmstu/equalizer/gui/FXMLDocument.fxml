@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.chart.*?>
+
+
+<AnchorPane  xmlns:fx="http://javafx.com/fxml/1" id="AnchorPane" prefHeight="1000" prefWidth="1200" fx:controller="ru.bmstu.equalizer.gui.FXMLDocumentController">
+    <children>
+ 
+        <Label layoutX="5" layoutY="5" text="Выберите *.wav файл из Finder"/>  
+        <Button layoutX="260" layoutY="5" text="Открыть" onAction="#open" fx:id="button_select"/>
+        <Button layoutX="10" layoutY="30" text="Play"  onAction="#play" fx:id="button_play" />
+  
+        <Button layoutX="60" layoutY="30" text="Pause"  onAction="#pause" fx:id="button_pause" />
+        <Button layoutX="122" layoutY="30" text="Reset" onAction="#stop" fx:id="button_stop" />
+        
+        <Slider fx:id="soundSlider" 
+                       layoutX="180" layoutY="60"   max="1.3" min="0" orientation="HORIZONTAL"  value="0.65" rotate="0">    
+                </Slider>
+                
+        <Label layoutX="5" layoutY="70" text="Выберите эффект"/>   
+        <CheckBox text="Delay" layoutX="50" layoutY="100" onAction="#chorusBox" />
+        <CheckBox text="Distortion" layoutX="120" layoutY="100" onAction="#distBox" />
+        <Slider fx:id="distortionSlider" 
+                       layoutX="190" layoutY="120"   max="7"  min="0" value="1.0" rotate="0" maxWidth="110">    
+                	</Slider>
+        <Label layoutX="5" layoutY="160"  text="Выберите коэффициенты усиления полос"/>
+        <HBox layoutX="20" layoutY="190" prefWidth="600" prefHeight="20">
+            <children>
+                <Label text="0-0.5 kHz" prefWidth="100"/>
+                <Label text="0.5-1.5 kHz" prefWidth="100"/> 
+                <Label text="1.5-3.5 kHz" prefWidth="100"/>
+                <Label text="3.5-7.5 kHz" prefWidth="100"/>
+                <Label text="7.5-15.5 kHz" prefWidth="100"/>
+                <Label text="15.5-19 kHz" prefWidth="100"/>
+                
+            </children>
+        </HBox>
+        <HBox layoutX="5" layoutY="210" prefWidth="600"  prefHeight="150" >    
+            <children>
+                <Slider fx:id="Slider0" orientation="VERTICAL" min="0.001" max="1" prefWidth="100"/>
+                <Slider fx:id="Slider1" orientation="VERTICAL" min="0.001" max="1" prefWidth="100"/>
+                <Slider fx:id="Slider2" orientation="VERTICAL" min="0.001" max="1" prefWidth="100"/>
+                <Slider fx:id="Slider3" orientation="VERTICAL" min="0.001" max="1" prefWidth="100"/>
+                <Slider fx:id="Slider4" orientation="VERTICAL" min="0.001" max="1" prefWidth="100"/>
+                <Slider fx:id="Slider5" orientation="VERTICAL" min="0.001" max="1" prefWidth="100"/>
+                
+            </children>
+        </HBox>
+        <HBox layoutX="20" layoutY="370" prefWidth="600" prefHeight="50">
+            <children>
+                <Label fx:id="Label0" prefWidth="100"/>
+                <Label fx:id="Label1" prefWidth="100"/> 
+                <Label fx:id="Label2" prefWidth="100"/>
+                <Label fx:id="Label3" prefWidth="100"/>
+                <Label fx:id="Label4" prefWidth="100"/>
+                <Label fx:id="Label5" prefWidth="100"/>
+                
+            </children>
+        
+        </HBox>
+        <Button fx:id="buttonClose" layoutX="250" layoutY="420"  text="Close" maxWidth="110"
+                	onAction="#clickClose" > 	
+            </Button>
+        <CheckBox fx:id="buttonPlot" layoutX="500" layoutY="420"  text="Plot" maxWidth="110"
+                	onAction="#clickPlot" > 	
+            </CheckBox>
+        <LineChart fx:id="chart1" layoutX="600" layoutY="0" title="До изменения" titleSide="TOP" legendVisible="false" >
+            <xAxis><NumberAxis label="Bands" lowerBound="0" upperBound="3" tickUnit="1" fx:id="xAxis1"/></xAxis>
+            <yAxis><NumberAxis label="Magnitude" lowerBound="0" upperBound="3" tickUnit="1" fx:id="yAxis1"/></yAxis>
+            
+        </LineChart>
+        <LineChart fx:id="chart2" layoutX="600" layoutY="380" title="После изменения" titleSide="TOP" legendVisible="false">
+            <xAxis><NumberAxis label="Bands" lowerBound="0" upperBound="3" tickUnit="1" fx:id="xAxis2"/></xAxis>
+            <yAxis><NumberAxis label="Magnitude" lowerBound="0" upperBound="3" tickUnit="1" fx:id="yAxis2"/></yAxis>
+        </LineChart>
+      
+    </children>
+</AnchorPane>
